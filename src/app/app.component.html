@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Lista de Peronsajes de RICK & MORTY</h1>
+  <hr>
+  <h4>
+    Páginas: {{ numPages }}
+    <br>
+    Num. Página: {{ currentPage }}
+  </h4>
+  <div class="botones">
+    <button class="btn btn-info" (click)="changePage(false)" [disabled]="currentPage === 1">Anterior</button>
+    <button class="btn btn-info ml-2" (click)="changePage(true)" [disabled]="currentPage === numPages">Siguiente</button>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-xs-6 col-sm-6" *ngFor="let personaje of arrPersonajes">
+      
+      <div class="personaje" [ngClass]="{ vivo: (personaje.status === 'Alive'), muerto: (personaje.status == 'Dead')}" >
+        <h4>{{ personaje.name }}</h4>
+        <img [src]="personaje.image">
+        <hr>
+        <p><strong>Especie:</strong> {{ personaje.species }} </p>
+      </div>
+
+    </div>
+  </div>
+</div>
